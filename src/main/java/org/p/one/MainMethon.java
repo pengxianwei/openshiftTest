@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
+
 @SpringBootApplication(exclude = MongoAutoConfiguration.class)
 public class MainMethon extends SpringBootServletInitializer{
 @Override
