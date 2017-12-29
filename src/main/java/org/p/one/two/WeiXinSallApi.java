@@ -13,10 +13,14 @@ public class WeiXinSallApi {
 	 
 	@RequestMapping("/h")
 	@ResponseBody
-    String home() {
+    String home(String name) {
 		try {
-			//redisClient.set("testone", "is ok");
-			return redisClient.get("testone");
+			
+			if (name  == null) {
+				return redisClient.get("testone");
+			} else {
+				redisClient.set("testone",name);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
