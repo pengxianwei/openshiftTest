@@ -1,0 +1,11 @@
+spring:
+  redis:
+    host: 10.131.41.85
+    database: 0
+    port: 8000
+    pool:
+      max-active: 3
+      max-wait: 1
+      max-idle: 3
+      min-idle: 0
+    timeout: 100
