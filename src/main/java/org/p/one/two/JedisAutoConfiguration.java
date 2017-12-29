@@ -19,7 +19,8 @@ public class JedisAutoConfiguration {
 	@Autowired  
     private RedisConfig prop; 
 	
-	@Bean(name="jedisPool")
+	@Bean(name="redisPool_my")
+	@ConditionalOnMissingBean(JedisPool.class)
 	public JedisPool jedisPool() {
 		JedisPoolConfig config = new JedisPoolConfig();
 		config.setMaxTotal(prop.getPool().getmaxActive());
@@ -30,7 +31,7 @@ public class JedisAutoConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean(RedisClient.class)//容器中如果没有RedisClient这个类,那么自动配置这个RedisClient
-	public RedisClient redisClient(@Qualifier("jedisPool")JedisPool pool) {
+	public RedisClient redisClient(@Qualifier("redisPool_my")JedisPool pool) {
 		RedisClient redisClient = new RedisClient();
 		redisClient.setJedisPool(pool);
 		return redisClient;
