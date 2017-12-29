@@ -22,9 +22,9 @@ public class JedisAutoConfiguration {
 	@Bean(name="jedisPool")
 	public JedisPool jedisPool() {
 		JedisPoolConfig config = new JedisPoolConfig();
-		config.setMaxTotal(prop.getMaxTotal());
-		config.setMaxIdle(prop.getMaxIdle());
-		config.setMaxWaitMillis(prop.getMaxWaitMillis());
+		config.setMaxTotal(prop.getPool().getmaxActive());
+		config.setMaxIdle(prop.getPool().getMaxIdle());
+		config.setMaxWaitMillis(prop.getPool().getMaxWaitMillis());
 		return new JedisPool(config, prop.getHost(), prop.getPort());
 	}
 	

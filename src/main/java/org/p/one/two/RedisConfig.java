@@ -1,12 +1,12 @@
 package org.p.one.two;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = RedisConfig.JEDIS_PREFIX) 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@ConfigurationProperties(prefix=RedisConfig.JEDIS_PREFIX)
 public class RedisConfig {
 	public static final String JEDIS_PREFIX = "spring.redis";  
-    
     private String host;  
       
     public String getHost() {
@@ -25,35 +25,49 @@ public class RedisConfig {
 		this.port = port;
 	}
 
-	public int getMaxTotal() {
-		return maxTotal;
+
+	
+	
+	private int port;  
+	
+	private Pool pool;
+	
+	
+	public Pool getPool() {
+		return pool;
 	}
 
-	public void setMaxTotal(int maxTotal) {
-		this.maxTotal = maxTotal;
+	public void setPool(Pool pool) {
+		this.pool = pool;
 	}
 
+
+	public static class Pool {
+	
+    private int maxActive;  
+    private int maxIdle;  
+    private int maxWaitMillis;
+	public int getmaxActive() {
+		return maxActive;
+	}
+	public void setmaxActive(int maxActive) {
+		this.maxActive = maxActive;
+	}
 	public int getMaxIdle() {
 		return maxIdle;
 	}
-
 	public void setMaxIdle(int maxIdle) {
 		this.maxIdle = maxIdle;
 	}
-
 	public int getMaxWaitMillis() {
 		return maxWaitMillis;
 	}
-
 	public void setMaxWaitMillis(int maxWaitMillis) {
 		this.maxWaitMillis = maxWaitMillis;
+	} 
+    
+    
 	}
-
-	private int port;  
-    @Value("${spring.redis.pool.max-active}")  
-    private int maxTotal;  
-    @Value("${spring.redis.pool.max-idle}")
-    private int maxIdle;  
-    @Value("${spring.redis.pool.max-wait}")
-    private int maxWaitMillis; 
+	
+    
 }
