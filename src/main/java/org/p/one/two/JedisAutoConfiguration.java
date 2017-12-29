@@ -20,12 +20,11 @@ public class JedisAutoConfiguration {
     private RedisConfig prop; 
 	
 	@Bean(name="redisPool_my")
-	@ConditionalOnMissingBean(JedisPool.class)
 	public JedisPool jedisPool() {
 		JedisPoolConfig config = new JedisPoolConfig();
-		config.setMaxTotal(prop.getPool().getmaxActive());
-		config.setMaxIdle(prop.getPool().getMaxIdle());
-		config.setMaxWaitMillis(prop.getPool().getMaxWaitMillis());
+		config.setMaxTotal(3);
+		config.setMaxIdle(3);
+		config.setMaxWaitMillis(1);
 		return new JedisPool(config, prop.getHost(), prop.getPort());
 	}
 	
