@@ -7,6 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>openshiftOne Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    <java.version>1.8</java.version>
@@ -19,6 +20,7 @@
 	<relativePath /> <!-- lookup parent from repository -->
   </parent>
   <dependencies>
+
   	<dependency>
        <groupId>org.springframework.boot</groupId>
        <artifactId>spring-boot-starter-web</artifactId>
