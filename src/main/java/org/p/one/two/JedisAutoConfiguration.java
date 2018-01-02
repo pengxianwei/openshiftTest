@@ -25,7 +25,7 @@ public class JedisAutoConfiguration {
 		config.setMaxTotal(3);
 		config.setMaxIdle(3);
 		config.setMaxWaitMillis(1);
-		return new JedisPool(config, "172.30.52.200", 6379);
+		return new JedisPool(config, prop.getHost(), prop.getPort());
 	}
 	
 	@Bean
